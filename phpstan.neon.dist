@@ -25,4 +25,6 @@ parameters:
 		- '#Parameter \#1 \$query of method wpdb::prepare\(\) expects literal-string#'
 		# prepare() ne renvoie null qu'en cas d'erreur de programmation.
 		- '#Parameter \#1 \$query of method wpdb::query\(\) expects string, string\|null given#'
+		# Fichier généré par `npm run build` (absent en CI PHP), protégé par is_file().
+		- '#Path in require\(\) ".*build/admin\.asset\.php" is not a file#'
 	reportUnmatchedIgnoredErrors: false
