@@ -96,8 +96,8 @@ jobs:
         run: |
           gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName,isPrerelease \
             | jq -r '.[] | select(.isPrerelease) | .tagName' \
-            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-dev\.[0-9]+$' \
-            | grep -vx "$KEEP" \
+            | { grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-dev\.[0-9]+$' || true; } \
+            | { grep -vx "$KEEP" || true; } \
             | while IFS= read -r tag; do
                 echo "Suppression de $tag"
                 gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true
