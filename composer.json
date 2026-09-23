@@ -1,0 +1,47 @@
+{
+	"name": "agence-lumia/lumia-staging",
+	"description": "Lümia Staging — versions de travail pour les pages et templates Bricks.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^10.5",
+		"phpstan/phpstan": "^2.1",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"php-stubs/wp-cli-stubs": "^2.11",
+		"wp-coding-standards/wpcs": "^3.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Lumia\\Staging\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Lumia\\Staging\\Tests\\": "tests/unit/"
+		}
+	},
+	"scripts": {
+		"lint": "phpcs",
+		"stan": "phpstan analyse --memory-limit=2G",
+		"test": "phpunit",
+		"ci": [
+			"@lint",
+			"@stan",
+			"@test"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		},
+		"platform": {
+			"php": "8.1"
+		},
+		"sort-packages": true
+	}
+}

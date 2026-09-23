@@ -1,0 +1,686 @@
+@import url("../tokens.css");
+
+/*
+ * Lümia Staging — bandeau et fenêtres dans l'éditeur Bricks (thème sombre)
+ * et sur le front (thème clair). Tout est préfixé .lmv-ui pour ne jamais
+ * hériter du CSS de Bricks ni du site.
+ */
+
+.lmv-ui,
+.lmv-ui * {
+	box-sizing: border-box;
+}
+
+.lmv-ui {
+	font: var(--lmv-font-size) / 1.45 var(--lmv-font);
+	color: var(--lmv-text);
+	-webkit-font-smoothing: antialiased;
+}
+
+.lmv-ui button,
+.lmv-ui input,
+.lmv-ui textarea,
+.lmv-ui select {
+	font: inherit;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.lmv-ui button {
+	cursor: pointer;
+}
+
+.lmv-ui svg {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.lmv-ui :focus-visible {
+	outline: none;
+	box-shadow: var(--lmv-focus-ring);
+}
+
+/* ------------------------------------------------------------------ */
+/* Boutons                                                             */
+/* ------------------------------------------------------------------ */
+
+.lmv-ui .lmv-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 34px;
+	margin: 0;
+	padding: 0 12px;
+	border: 1px solid transparent;
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-surface-2);
+	color: var(--lmv-text);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	white-space: nowrap;
+	text-decoration: none;
+	transition: background var(--lmv-duration), border-color var(--lmv-duration), color var(--lmv-duration);
+}
+
+.lmv-ui .lmv-btn:hover:not(:disabled) {
+	background: var(--lmv-line);
+}
+
+.lmv-ui .lmv-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.lmv-ui .lmv-btn--ghost {
+	background: transparent;
+	color: var(--lmv-text-muted);
+}
+
+.lmv-ui .lmv-btn--ghost:hover:not(:disabled) {
+	background: var(--lmv-surface-2);
+	color: var(--lmv-text);
+}
+
+.lmv-ui .lmv-btn--primary {
+	background: var(--lmv-accent);
+	color: #fff;
+}
+
+.lmv-ui .lmv-btn--primary:hover:not(:disabled) {
+	background: var(--lmv-accent-strong);
+}
+
+.lmv-ui .lmv-btn--danger {
+	color: var(--lmv-state-conflict);
+}
+
+.lmv-ui .lmv-btn--link {
+	height: auto;
+	padding: 4px 6px;
+	background: transparent;
+	color: var(--lmv-accent);
+}
+
+.lmv-ui .lmv-icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: var(--lmv-radius-s);
+	background: transparent;
+	color: var(--lmv-text-muted);
+	transition: background var(--lmv-duration), color var(--lmv-duration);
+}
+
+.lmv-ui .lmv-icon-btn:hover {
+	background: var(--lmv-surface-2);
+	color: var(--lmv-text);
+}
+
+/* ------------------------------------------------------------------ */
+/* Bandeau de version                                                   */
+/* ------------------------------------------------------------------ */
+
+.lmv-banner {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	max-width: calc(100vw - 32px);
+	padding: 6px 6px 6px 8px;
+	transform: translateX(-50%);
+	background: var(--lmv-surface);
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-l);
+	box-shadow: var(--lmv-shadow-lg);
+	animation: lmv-rise var(--lmv-duration) ease-out;
+}
+
+.lmv-banner__status {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+	padding-right: 4px;
+}
+
+.lmv-banner__state {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 32px;
+	height: 32px;
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-state-bg);
+	color: var(--lmv-state-color);
+}
+
+.lmv-banner__text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	line-height: 1.25;
+}
+
+.lmv-banner__eyebrow {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: var(--lmv-state-color);
+	white-space: nowrap;
+}
+
+.lmv-banner__title {
+	max-width: 220px;
+	overflow: hidden;
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.lmv-banner__info {
+	position: relative;
+	display: inline-flex;
+	flex: none;
+	padding: 4px;
+	border-radius: 50%;
+	color: var(--lmv-text-muted);
+	cursor: help;
+}
+
+.lmv-banner__info:hover,
+.lmv-banner__info:focus-visible {
+	color: var(--lmv-text);
+}
+
+.lmv-banner__sep {
+	flex: none;
+	width: 1px;
+	height: 24px;
+	background: var(--lmv-line);
+}
+
+.lmv-banner__actions {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.lmv-banner__actions .lmv-btn--primary {
+	margin: 0 4px;
+}
+
+/* Infobulle (survol ou focus clavier) */
+.lmv-tooltip {
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 12px);
+	display: grid;
+	gap: 4px;
+	width: 280px;
+	padding: 10px 12px;
+	transform: translateX(-50%);
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	color: var(--lmv-text-muted);
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.45;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity var(--lmv-duration);
+}
+
+.lmv-tooltip strong {
+	color: var(--lmv-text);
+	font-weight: 600;
+}
+
+.lmv-banner__info:hover .lmv-tooltip,
+.lmv-banner__info:focus-visible .lmv-tooltip {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Bandeau réduit */
+.lmv-pill {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	z-index: 999999;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	max-width: 280px;
+	height: 40px;
+	margin: 0;
+	padding: 0 12px 0 6px;
+	transform: translateX(-50%);
+	border: 1px solid var(--lmv-line);
+	border-radius: 999px;
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	color: var(--lmv-text);
+	font-size: 13px;
+	font-weight: 600;
+	animation: lmv-rise var(--lmv-duration) ease-out;
+}
+
+.lmv-pill__state {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: var(--lmv-state-bg);
+	color: var(--lmv-state-color);
+}
+
+.lmv-pill__label {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Bouton « Créer une version » et sa pastille */
+/* Centrés en bas : au-dessus du canevas, jamais sur les panneaux de Bricks. */
+.lmv-create {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	transform: translateX(-50%);
+	z-index: 999999;
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 4px;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-l);
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	animation: lmv-rise var(--lmv-duration) ease-out;
+}
+
+.lmv-fab {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	translate: -50% 0;
+	z-index: 999999;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid var(--lmv-line);
+	border-radius: 50%;
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	color: var(--lmv-accent);
+	transition: transform var(--lmv-duration), color var(--lmv-duration);
+}
+
+.lmv-fab:hover {
+	transform: scale(1.06);
+	color: var(--lmv-text);
+}
+
+/* État des pastilles */
+.lmv-ui [data-state="in_progress"] { --lmv-state-color: var(--lmv-state-progress); --lmv-state-bg: var(--lmv-state-progress-bg); }
+.lmv-ui [data-state="in_review"] { --lmv-state-color: var(--lmv-state-review); --lmv-state-bg: var(--lmv-state-review-bg); }
+.lmv-ui [data-state="approved"] { --lmv-state-color: var(--lmv-state-approved); --lmv-state-bg: var(--lmv-state-approved-bg); }
+.lmv-ui [data-state="scheduled"] { --lmv-state-color: var(--lmv-state-scheduled); --lmv-state-bg: var(--lmv-state-scheduled-bg); }
+.lmv-ui [data-state="conflict"] { --lmv-state-color: var(--lmv-state-conflict); --lmv-state-bg: var(--lmv-state-conflict-bg); }
+
+.lmv-ui .lmv-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 3px 10px;
+	border-radius: 999px;
+	background: var(--lmv-state-bg);
+	color: var(--lmv-state-color);
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ */
+/* Menu contextuel                                                      */
+/* ------------------------------------------------------------------ */
+
+.lmv-menu {
+	position: fixed;
+	z-index: 1000001;
+	min-width: 190px;
+	padding: 4px;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	animation: lmv-rise var(--lmv-duration) ease-out;
+}
+
+.lmv-menu__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	margin: 0;
+	padding: 8px 10px;
+	border: 0;
+	border-radius: 6px;
+	background: transparent;
+	color: var(--lmv-text);
+	font-size: 13px;
+	text-align: left;
+}
+
+.lmv-menu__item:hover,
+.lmv-menu__item:focus-visible {
+	background: var(--lmv-surface-2);
+}
+
+.lmv-menu__item.is-danger {
+	color: var(--lmv-state-conflict);
+}
+
+/* ------------------------------------------------------------------ */
+/* Fenêtres                                                             */
+/* ------------------------------------------------------------------ */
+
+.lmv-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 1000000;
+	display: grid;
+	place-items: center;
+	padding: 16px;
+	background: oklch(0.1 0.01 264 / 0.6);
+	backdrop-filter: blur(2px);
+	animation: lmv-fade var(--lmv-duration) ease-out;
+}
+
+.lmv-dialog {
+	width: min(540px, 100%);
+	max-height: calc(100vh - 32px);
+	overflow: auto;
+	padding: 0;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-l);
+	background: var(--lmv-surface);
+	box-shadow: var(--lmv-shadow-lg);
+	color: var(--lmv-text);
+	animation: lmv-rise var(--lmv-duration) ease-out;
+}
+
+.lmv-dialog > h2 {
+	margin: 0;
+	padding: 18px 22px;
+	border-bottom: 1px solid var(--lmv-line);
+	background: var(--lmv-surface-2);
+	color: var(--lmv-text);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.lmv-dialog > div {
+	padding: 18px 22px 20px;
+}
+
+.lmv-dialog p {
+	margin: 0 0 12px;
+}
+
+.lmv-dialog label {
+	display: grid;
+	gap: 6px;
+	margin-bottom: 14px;
+	color: var(--lmv-text);
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.lmv-dialog input,
+.lmv-dialog textarea,
+.lmv-dialog select {
+	width: 100%;
+	min-height: 38px;
+	margin: 0;
+	padding: 8px 12px;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-bg);
+	color: var(--lmv-text);
+	font-size: 13px;
+	font-weight: 400;
+	box-shadow: none;
+	transition: border-color var(--lmv-duration);
+}
+
+.lmv-dialog input:focus,
+.lmv-dialog textarea:focus,
+.lmv-dialog select:focus {
+	border-color: var(--lmv-accent);
+	outline: none;
+}
+
+.lmv-dialog textarea {
+	min-height: 72px;
+	resize: vertical;
+}
+
+.lmv-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 8px;
+	margin: 18px -22px -20px;
+	padding: 14px 22px;
+	border-top: 1px solid var(--lmv-line);
+	background: var(--lmv-surface-2);
+}
+
+.lmv-summary {
+	margin: 0 0 14px;
+	padding: 10px 14px;
+	list-style: none;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-bg);
+	font-size: 13px;
+}
+
+.lmv-summary li {
+	margin: 0;
+}
+
+.lmv-summary li + li {
+	margin-top: 4px;
+}
+
+.lmv-alert {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 8px;
+	padding: 10px 12px;
+	border: 1px solid transparent;
+	border-left: 3px solid var(--lmv-state-review);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-state-review-bg);
+	color: var(--lmv-text);
+	font-size: 13px;
+}
+
+.lmv-alert--error,
+.lmv-alert--conflict {
+	border-left-color: var(--lmv-state-conflict);
+	background: var(--lmv-state-conflict-bg);
+}
+
+.lmv-muted {
+	color: var(--lmv-text-muted);
+	font-size: 12px;
+}
+
+.lmv-skeleton {
+	height: 12px;
+	margin: 10px 0;
+	border-radius: 6px;
+	background: linear-gradient(90deg, var(--lmv-surface-2), var(--lmv-line), var(--lmv-surface-2));
+	background-size: 200% 100%;
+	animation: lmv-shine 1.2s linear infinite;
+}
+
+.lmv-links {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.lmv-links li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 8px 0;
+	border-top: 1px solid var(--lmv-line);
+	font-size: 13px;
+}
+
+.lmv-results {
+	max-height: 180px;
+	overflow: auto;
+	margin: 4px 0 0;
+	padding: 4px;
+	list-style: none;
+	border: 1px solid var(--lmv-line);
+	border-radius: var(--lmv-radius-s);
+	background: var(--lmv-surface);
+}
+
+.lmv-results button {
+	display: block;
+	width: 100%;
+	padding: 8px 10px;
+	border: 0;
+	border-radius: 6px;
+	background: transparent;
+	color: var(--lmv-text);
+	text-align: left;
+}
+
+.lmv-results button:hover,
+.lmv-results button[aria-selected="true"] {
+	background: var(--lmv-accent-soft);
+}
+
+.lmv-toast {
+	position: fixed;
+	left: 50%;
+	bottom: 80px;
+	z-index: 1000001;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 14px;
+	transform: translateX(-50%);
+	border-radius: var(--lmv-radius-s);
+	background: oklch(0.2 0.01 264);
+	box-shadow: var(--lmv-shadow-lg);
+	color: #fff;
+	font-size: 13px;
+}
+
+.lmv-toast .lmv-btn--link {
+	color: oklch(0.82 0.09 277);
+}
+
+@keyframes lmv-rise {
+	from {
+		opacity: 0;
+		translate: 0 6px;
+	}
+
+	to {
+		opacity: 1;
+		translate: 0 0;
+	}
+}
+
+@keyframes lmv-fade {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes lmv-shine {
+	to {
+		background-position: -200% 0;
+	}
+}
+
+@media (max-width: 900px) {
+	.lmv-banner .lmv-btn__label {
+		display: none;
+	}
+
+	.lmv-banner .lmv-btn {
+		padding: 0 9px;
+	}
+}
+
+@media (max-width: 600px) {
+	.lmv-banner {
+		left: 8px;
+		right: 8px;
+		transform: none;
+		flex-wrap: wrap;
+	}
+
+	.lmv-banner__sep {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.lmv-ui *,
+	.lmv-banner,
+	.lmv-pill,
+	.lmv-create,
+	.lmv-overlay,
+	.lmv-dialog,
+	.lmv-menu {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/* `hidden` doit l'emporter sur les display des champs de fenêtre. */
+.lmv-ui [hidden] {
+	display: none !important;
+}

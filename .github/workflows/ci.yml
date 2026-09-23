@@ -1,0 +1,76 @@
+name: CI
+
+# Sur chaque PR, et appelé par les workflows de release avant toute
+# publication (une release ne part jamais sans CI verte).
+on:
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  php-quality:
+    name: PHPCS + PHPStan 8 + PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+      - run: vendor/bin/phpcs
+      - run: vendor/bin/phpstan analyse --memory-limit=2G --no-progress
+      - run: vendor/bin/phpunit
+
+  js:
+    name: ESLint + build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:js
+      - run: npm run build
+      - name: Barre d'aperçu client < 15 Ko
+        run: test "$(wc -c < assets/preview/toolbar.js)" -lt 15360
+
+  integration:
+    name: Intégration (PHP ${{ matrix.php }}, WP ${{ matrix.wp }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.1', '8.5']
+        wp: ['6.8', 'latest']
+    steps:
+      - uses: actions/checkout@v4
+      - name: WordPress + MariaDB + faux Bricks (Docker)
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+          WP_VERSION: ${{ matrix.wp }}
+        run: docker compose -f tests/integration/docker-compose.yml up --abort-on-container-exit --exit-code-from wp
+
+  # Bout en bout avec le vrai Bricks : l'archive (payante) vient d'un stockage
+  # privé, jamais du dépôt. Actif dès que le secret BRICKS_ZIP_URL est défini.
+  e2e:
+    name: Bout en bout (Bricks ${{ matrix.stack }})
+    runs-on: ubuntu-latest
+    if: ${{ vars.E2E_ENABLED == 'true' }}
+    strategy:
+      matrix:
+        stack: ['avec WooCommerce', 'seul']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Récupérer Bricks
+        env:
+          BRICKS_ZIP_URL: ${{ secrets.BRICKS_ZIP_URL }}
+        run: curl -fsSL "$BRICKS_ZIP_URL" -o /tmp/bricks.zip
+      - run: 'echo "À brancher : tests/e2e (Playwright) — voir CLAUDE.md, section Tests."'

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<ruleset name="Lümia Staging">
+	<description>WordPress Coding Standards (sécurité incluse), bloquant en CI.</description>
+
+	<file>lumia-staging.php</file>
+	<file>uninstall.php</file>
+	<file>src</file>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<config name="minimum_wp_version" value="6.8"/>
+	<config name="testVersion" value="8.1-"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- PHPCompatibility ne comprend pas les enums (PHP 8.1) : $this et self y sont valides. -->
+	<rule ref="PHPCompatibility.Variables.ForbiddenThisUseContexts">
+		<exclude-pattern>src/Domain/State\.php</exclude-pattern>
+	</rule>
+	<rule ref="PHPCompatibility.FunctionDeclarations.NewParamTypeDeclarations">
+		<exclude-pattern>src/Domain/State\.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress">
+		<!-- PSR-4 : noms de fichiers en PascalCase. -->
+		<exclude name="WordPress.Files.FileName"/>
+		<!-- Types et docblocks portés par PHP 8.1 + PHPStan. -->
+		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+		<exclude name="Squiz.Commenting.ClassComment.Missing"/>
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<!-- Types portés par PHPStan (list<>, array{} …), non compris par ces sniffs. -->
+		<exclude name="Squiz.Commenting.FunctionComment.IncorrectTypeHint"/>
+		<exclude name="Squiz.Commenting.FunctionComment.ParamNameNoMatch"/>
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle"/>
+		<exclude name="Squiz.Commenting.FunctionCommentThrowTag.Missing"/>
+		<!-- Séparateurs de sections (commentaires en bloc) dans les classes. -->
+		<exclude name="Squiz.Commenting.BlockComment"/>
+		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
+		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
+		<!-- Messages d'exception : texte brut rendu en JSON / textContent / WP-CLI,
+		     jamais injecté en HTML ; l'échappement se fait à l'affichage. -->
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+		<!-- Tables dédiées : requêtes directes voulues (§7). -->
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching"/>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="lumia-staging"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="lmv_"/>
+				<element value="Lumia\Staging"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

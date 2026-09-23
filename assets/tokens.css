@@ -1,0 +1,102 @@
+/**
+ * Jetons de design Lümia Staging — fichier unique.
+ *
+ * Uniquement des custom properties : ce fichier ne peint rien et peut être
+ * chargé partout (admin, builder Bricks) sans effet de bord.
+ * Langage visuel aligné sur Studio Kyne Mini Tools (neutres oklch, accent
+ * indigo, rayons 12/8/4). La barre d'aperçu client (assets/preview/toolbar.js)
+ * reprend ces valeurs en dur car elle vit dans un Shadow DOM.
+ */
+:root {
+	/* Neutres */
+	--lmv-white: oklch(1 0 0);
+	--lmv-n50: oklch(0.985 0 0);
+	--lmv-n100: oklch(0.97 0 0);
+	--lmv-n200: oklch(0.922 0 0);
+	--lmv-n300: oklch(0.87 0 0);
+	--lmv-n400: oklch(0.708 0 0);
+	--lmv-n500: oklch(0.556 0 0);
+	--lmv-n600: oklch(0.439 0 0);
+	--lmv-n700: oklch(0.371 0 0);
+	--lmv-n800: oklch(0.269 0 0);
+	--lmv-n900: oklch(0.205 0 0);
+	--lmv-n950: oklch(0.145 0 0);
+
+	/* Accent */
+	--lmv-accent: oklch(0.585 0.233 277.117);
+	--lmv-accent-strong: oklch(0.511 0.262 276.966);
+	--lmv-accent-soft: oklch(0.962 0.018 272.314);
+	--lmv-focus-ring: 0 0 0 3px oklch(0.7 0.15 275 / 0.25);
+
+	/* Surfaces et texte */
+	--lmv-bg: var(--lmv-n100);
+	--lmv-surface: var(--lmv-white);
+	--lmv-surface-2: var(--lmv-n50);
+	--lmv-line: var(--lmv-n200);
+	--lmv-line-strong: var(--lmv-n300);
+	--lmv-text: var(--lmv-n900);
+	--lmv-text-muted: var(--lmv-n500);
+
+	/* États (la couleur n'est jamais le seul indicateur : icône + libellé) */
+	--lmv-state-progress: oklch(0.546 0.215 262.881);
+	--lmv-state-progress-bg: oklch(0.97 0.014 254.604);
+	--lmv-state-review: oklch(0.555 0.163 48.998);
+	--lmv-state-review-bg: oklch(0.987 0.022 95.277);
+	--lmv-state-approved: oklch(0.527 0.137 150.069);
+	--lmv-state-approved-bg: oklch(0.979 0.021 166.113);
+	--lmv-state-scheduled: oklch(0.558 0.288 302.321);
+	--lmv-state-scheduled-bg: oklch(0.977 0.014 308.299);
+	--lmv-state-conflict: oklch(0.577 0.245 27.325);
+	--lmv-state-conflict-bg: oklch(0.971 0.013 17.38);
+
+	/* Rayons, espacements, typo, ombres, mouvement */
+	--lmv-radius-xs: 4px;
+	--lmv-radius-s: 8px;
+	--lmv-radius: 8px;
+	--lmv-radius-l: 12px;
+	--lmv-space-1: 4px;
+	--lmv-space-2: 8px;
+	--lmv-space-3: 12px;
+	--lmv-space-4: 16px;
+	--lmv-space-5: 20px;
+	--lmv-space-6: 28px;
+	--lmv-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--lmv-font-size: 14px;
+	--lmv-control-h: 42px;
+	--lmv-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.04);
+	--lmv-shadow: 0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+	--lmv-shadow-lg: 0 12px 32px oklch(0 0 0 / 0.14), 0 2px 6px oklch(0 0 0 / 0.06);
+	--lmv-duration: 150ms;
+	--lmv-sidebar-width: 240px;
+}
+
+/* Thème sombre : éditeur Bricks (s'accorde à son interface). */
+.lmv-theme-dark {
+	--lmv-bg: oklch(0.18 0.005 264);
+	--lmv-surface: oklch(0.225 0.006 264);
+	--lmv-surface-2: oklch(0.27 0.007 264);
+	--lmv-line: oklch(0.32 0.008 264);
+	--lmv-line-strong: oklch(0.4 0.01 264);
+	--lmv-text: oklch(0.96 0.003 264);
+	--lmv-text-muted: oklch(0.72 0.01 264);
+	--lmv-accent: oklch(0.673 0.182 276.935);
+	--lmv-accent-strong: oklch(0.585 0.233 277.117);
+	--lmv-accent-soft: oklch(0.3 0.08 277);
+	--lmv-state-progress: oklch(0.78 0.11 255);
+	--lmv-state-progress-bg: oklch(0.3 0.06 260);
+	--lmv-state-review: oklch(0.84 0.13 80);
+	--lmv-state-review-bg: oklch(0.32 0.05 70);
+	--lmv-state-approved: oklch(0.8 0.13 160);
+	--lmv-state-approved-bg: oklch(0.3 0.05 160);
+	--lmv-state-scheduled: oklch(0.8 0.13 305);
+	--lmv-state-scheduled-bg: oklch(0.3 0.07 305);
+	--lmv-state-conflict: oklch(0.78 0.13 25);
+	--lmv-state-conflict-bg: oklch(0.32 0.07 25);
+	--lmv-shadow-lg: 0 16px 40px oklch(0 0 0 / 0.55), 0 2px 8px oklch(0 0 0 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--lmv-duration: 0ms;
+	}
+}

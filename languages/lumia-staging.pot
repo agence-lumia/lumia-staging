@@ -1,0 +1,1457 @@
+# Copyright (C) 2026 Agence Lümia
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Lümia Staging 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/app\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-23T17:13:35+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: lumia-staging\n"
+
+#. Plugin Name of the plugin
+#: lumia-staging.php
+msgid "Lümia Staging"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: lumia-staging.php
+msgid "https://github.com/agence-lumia/lumia-staging"
+msgstr ""
+
+#. Description of the plugin
+#: lumia-staging.php
+msgid "Versions de travail pour les pages et templates Bricks : modifier sans impacter les visiteurs, faire valider par le client, publier sur le même ID et revenir en arrière."
+msgstr ""
+
+#. Author of the plugin
+#: lumia-staging.php
+msgid "Agence Lümia"
+msgstr ""
+
+#. Author URI of the plugin
+#: lumia-staging.php
+msgid "https://studiokyne.com"
+msgstr ""
+
+#. translators: 1: PHP version, 2: WordPress version
+#: lumia-staging.php:42
+#, php-format
+msgid "Lümia Staging nécessite PHP %1$s et WordPress %2$s minimum. Le plugin est inactif."
+msgstr ""
+
+#: src/Adapter/BricksAdapter.php:277
+#: build/admin.js:11
+msgid "Bureau"
+msgstr ""
+
+#: src/Adapter/BricksAdapter.php:298
+msgid "Tablette"
+msgstr ""
+
+#: src/Adapter/BricksAdapter.php:303
+msgid "Mobile"
+msgstr ""
+
+#: src/Adapter/WooAdapter.php:63
+msgid "Aperçu : la commande est désactivée."
+msgstr ""
+
+#: src/Admin/Admin.php:68
+msgid "Versions"
+msgstr ""
+
+#: src/Admin/Admin.php:69
+msgid "Tableau de bord"
+msgstr ""
+
+#: src/Admin/Admin.php:70
+#: src/Admin/Admin.php:195
+#: src/Admin/AdminBar.php:122
+#: build/admin.js:11
+msgid "Historique"
+msgstr ""
+
+#: src/Admin/Admin.php:71
+#: src/Front/UiConfig.php:88
+#: build/admin.js:9
+msgid "Comparer"
+msgstr ""
+
+#: src/Admin/Admin.php:72
+#: build/admin.js:10
+#: build/admin.js:11
+msgid "Journal"
+msgstr ""
+
+#: src/Admin/Admin.php:73
+#: src/Admin/Admin.php:229
+#: build/admin.js:11
+msgid "Réglages"
+msgstr ""
+
+#: src/Admin/Admin.php:95
+msgid "Lümia Staging nécessite JavaScript."
+msgstr ""
+
+#: src/Admin/Admin.php:165
+#: src/Admin/AdminBar.php:48
+msgid "Création de la version…"
+msgstr ""
+
+#: src/Admin/Admin.php:166
+#: src/Admin/AdminBar.php:49
+msgid "Impossible de créer la version."
+msgstr ""
+
+#: src/Admin/Admin.php:190
+#: src/Admin/AdminBar.php:98
+msgid "Reprendre la version"
+msgstr ""
+
+#: src/Admin/Admin.php:192
+#: src/Admin/AdminBar.php:98
+#: src/Front/UiConfig.php:140
+msgid "Créer une version"
+msgstr ""
+
+#: src/Admin/Admin.php:206
+msgid "Version de travail ouverte"
+msgstr ""
+
+#: src/Admin/Admin.php:254
+msgid "Lümia Staging — publication interrompue"
+msgstr ""
+
+#. translators: %s: list of titles
+#: src/Admin/Admin.php:258
+#, php-format
+msgid "Une publication s'est arrêtée en cours de route (délai dépassé ou serveur redémarré). La version en ligne a été restaurée à l'identique et la version de travail est conservée : %s. Vous pouvez relancer la publication."
+msgstr ""
+
+#: src/Admin/Admin.php:271
+#: build/admin.js:9
+msgid "Versions de travail"
+msgstr ""
+
+#: src/Admin/Admin.php:296
+msgid "Rien à signaler : aucune version oubliée, aucune validation reçue, aucune publication programmée cette semaine."
+msgstr ""
+
+#: src/Admin/Admin.php:299
+msgid "Validations reçues"
+msgstr ""
+
+#. translators: %s: name
+#: src/Admin/Admin.php:303
+#: build/admin.js:11
+#, php-format,js-format
+msgid "validée par %s"
+msgstr ""
+
+#. translators: %s: name
+#: src/Admin/Admin.php:305
+#, php-format
+msgid "modifications demandées par %s"
+msgstr ""
+
+#: src/Admin/Admin.php:309
+msgid "Publications programmées (7 jours)"
+msgstr ""
+
+#. translators: %s: date
+#: src/Admin/Admin.php:312
+#, php-format
+msgid "en ligne le %s"
+msgstr ""
+
+#: src/Admin/Admin.php:316
+msgid "Versions ouvertes depuis plus de 14 jours"
+msgstr ""
+
+#. translators: %d: days
+#: src/Admin/Admin.php:319
+#, php-format
+msgid "%d jour"
+msgid_plural "%d jours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Admin.php:322
+msgid "Toutes les versions"
+msgstr ""
+
+#: src/Admin/Admin.php:346
+msgid "Accès refusé."
+msgstr ""
+
+#. translators: %s: title
+#: src/Admin/AdminBar.php:68
+#, php-format
+msgid "Version de travail de « %s »"
+msgstr ""
+
+#: src/Admin/AdminBar.php:76
+#: src/Front/UiConfig.php:121
+msgid "Modifier dans Bricks"
+msgstr ""
+
+#: src/Admin/AdminBar.php:84
+msgid "Voir la version en ligne"
+msgstr ""
+
+#: src/Admin/AdminBar.php:112
+msgid "Créer une version de travail"
+msgstr ""
+
+#: src/Domain/State.php:55
+#: src/Front/UiConfig.php:150
+#: src/Rest/RestController.php:435
+#: build/admin.js:2
+msgid "Version de travail"
+msgstr ""
+
+#: src/Domain/State.php:56
+#: src/Front/UiConfig.php:151
+#: build/admin.js:2
+#: build/admin.js:8
+msgid "En attente du client"
+msgstr ""
+
+#: src/Domain/State.php:57
+#: src/Front/UiConfig.php:152
+msgid "Validée"
+msgstr ""
+
+#: src/Domain/State.php:58
+#: src/Front/UiConfig.php:153
+msgid "Programmée"
+msgstr ""
+
+#: src/Domain/State.php:59
+msgid "Publiée"
+msgstr ""
+
+#: src/Domain/State.php:60
+msgid "Abandonnée"
+msgstr ""
+
+#. translators: %s: title
+#: src/Front/UiConfig.php:85
+#, php-format
+msgid "Vous modifiez une version de travail de « %s ». Les visiteurs voient toujours la version en ligne."
+msgstr ""
+
+#: src/Front/UiConfig.php:86
+msgid "Astuce : créez de nouvelles classes plutôt que de modifier les classes globales existantes — ces modifications sont en ligne immédiatement."
+msgstr ""
+
+#: src/Front/UiConfig.php:87
+#: build/admin.js:9
+#: build/admin.js:11
+msgid "Aperçu client"
+msgstr ""
+
+#: src/Front/UiConfig.php:89
+#: build/admin.js:9
+msgid "Publier"
+msgstr ""
+
+#: src/Front/UiConfig.php:90
+#: build/admin.js:9
+msgid "Abandonner"
+msgstr ""
+
+#: src/Front/UiConfig.php:91
+msgid "Aperçu sur…"
+msgstr ""
+
+#: src/Front/UiConfig.php:92
+msgid "Réduire le bandeau"
+msgstr ""
+
+#: src/Front/UiConfig.php:93
+msgid "Afficher le bandeau de version"
+msgstr ""
+
+#: src/Front/UiConfig.php:94
+#: build/admin.js:7
+#: build/admin.js:8
+msgid "Note (reprise dans l'historique)"
+msgstr ""
+
+#: src/Front/UiConfig.php:95
+#: build/admin.js:7
+msgid "Ex. : refonte du hero + nouvelle section avis"
+msgstr ""
+
+#: src/Front/UiConfig.php:96
+msgid "Publier la version"
+msgstr ""
+
+#: src/Front/UiConfig.php:97
+#: build/admin.js:7
+#: build/admin.js:8
+msgid "Publier maintenant"
+msgstr ""
+
+#: src/Front/UiConfig.php:98
+#: build/admin.js:7
+msgid "Programmer"
+msgstr ""
+
+#: src/Front/UiConfig.php:99
+#: build/admin.js:7
+msgid "Date et heure de mise en ligne (fuseau du site)"
+msgstr ""
+
+#: src/Front/UiConfig.php:100
+#: build/admin.js:7
+msgid "Publication programmée."
+msgstr ""
+
+#: src/Front/UiConfig.php:101
+#: build/admin.js:7
+msgid "Annuler la programmation"
+msgstr ""
+
+#: src/Front/UiConfig.php:102
+#: build/admin.js:7
+msgid "Publier quand même (écrase)"
+msgstr ""
+
+#: src/Front/UiConfig.php:103
+#: build/admin.js:7
+msgid "Voir les différences"
+msgstr ""
+
+#: src/Front/UiConfig.php:104
+#: src/Front/UiConfig.php:118
+#: src/Preview/PreviewController.php:520
+#: build/admin.js:7
+#: build/admin.js:8
+#: build/admin.js:11
+msgid "Annuler"
+msgstr ""
+
+#: src/Front/UiConfig.php:105
+#: build/admin.js:8
+#: build/admin.js:11
+msgid "Fermer"
+msgstr ""
+
+#: src/Front/UiConfig.php:106
+msgid "Enregistrez vos modifications dans Bricks avant de publier : seul le contenu enregistré est publié."
+msgstr ""
+
+#: src/Front/UiConfig.php:107
+msgid "Chargement…"
+msgstr ""
+
+#: src/Front/UiConfig.php:108
+#: build/admin.js:6
+msgid "Aucune différence de mise en page avec la version en ligne."
+msgstr ""
+
+#. translators: 1: added, 2: removed, 3: modified
+#: src/Front/UiConfig.php:110
+#: build/admin.js:5
+#, php-format,js-format
+msgid "%1$d élément(s) ajouté(s), %2$d supprimé(s), %3$d modifié(s)"
+msgstr ""
+
+#: src/Front/UiConfig.php:111
+#: build/admin.js:5
+msgid "CSS de la page modifié"
+msgstr ""
+
+#: src/Front/UiConfig.php:112
+#: build/admin.js:5
+msgid "Réglages de la page modifiés"
+msgstr ""
+
+#. translators: %s: field list
+#: src/Front/UiConfig.php:113
+#: build/admin.js:6
+#, php-format,js-format
+msgid "Champs modifiés : %s"
+msgstr ""
+
+#: src/Front/UiConfig.php:114
+#: build/admin.js:4
+msgid "titre"
+msgstr ""
+
+#: src/Front/UiConfig.php:115
+#: build/admin.js:4
+msgid "extrait"
+msgstr ""
+
+#: src/Front/UiConfig.php:116
+#: build/admin.js:4
+msgid "image mise en avant"
+msgstr ""
+
+#: src/Front/UiConfig.php:117
+msgid "Publié."
+msgstr ""
+
+#: src/Front/UiConfig.php:119
+msgid "Publication annulée : la version précédente est de nouveau en ligne."
+msgstr ""
+
+#: src/Front/UiConfig.php:120
+msgid "Voir la page"
+msgstr ""
+
+#: src/Front/UiConfig.php:122
+msgid "Cette version a été publiée ou abandonnée. Vos modifications ne sont plus enregistrées ici."
+msgstr ""
+
+#: src/Front/UiConfig.php:123
+#: build/admin.js:7
+msgid "Partager au client"
+msgstr ""
+
+#: src/Front/UiConfig.php:124
+#: build/admin.js:7
+msgid "Durée de validité du lien (jours)"
+msgstr ""
+
+#: src/Front/UiConfig.php:125
+#: build/admin.js:7
+msgid "Page d'aperçu du template"
+msgstr ""
+
+#: src/Front/UiConfig.php:126
+#: build/admin.js:8
+msgid "Créer le lien"
+msgstr ""
+
+#: src/Front/UiConfig.php:127
+msgid "Lien copié dans le presse-papiers. Il ne sera plus affiché : gardez-le ou créez-en un autre."
+msgstr ""
+
+#: src/Front/UiConfig.php:128
+#: build/admin.js:7
+msgid "Liens existants"
+msgstr ""
+
+#: src/Front/UiConfig.php:129
+#: build/admin.js:8
+msgid "Révoquer"
+msgstr ""
+
+#. translators: %s: date
+#: src/Front/UiConfig.php:130
+#: build/admin.js:8
+#, php-format,js-format
+msgid "expire le %s"
+msgstr ""
+
+#: src/Front/UiConfig.php:131
+#: build/admin.js:7
+msgid "révoqué"
+msgstr ""
+
+#: src/Front/UiConfig.php:132
+#: build/admin.js:7
+msgid "expiré"
+msgstr ""
+
+#: src/Front/UiConfig.php:133
+#: build/admin.js:9
+msgid "Abandonner cette version ? Elle sera supprimée ; la version en ligne ne change pas."
+msgstr ""
+
+#: src/Front/UiConfig.php:134
+#: build/admin.js:9
+msgid "Version abandonnée."
+msgstr ""
+
+#: src/Front/UiConfig.php:135
+msgid "Une version de travail est ouverte"
+msgstr ""
+
+#. translators: %s: author
+#: src/Front/UiConfig.php:137
+#, php-format
+msgid "Une version de travail de ce contenu est en cours (par %s). Modifier l'original maintenant créera un conflit à la publication de la version."
+msgstr ""
+
+#: src/Front/UiConfig.php:138
+msgid "Aller à la version"
+msgstr ""
+
+#: src/Front/UiConfig.php:139
+msgid "Modifier quand même"
+msgstr ""
+
+#: src/Front/UiConfig.php:141
+msgid "Création…"
+msgstr ""
+
+#: src/Front/UiConfig.php:142
+#: build/admin.js:7
+msgid "Rechercher une page…"
+msgstr ""
+
+#: src/Front/UiConfig.php:143
+#: build/admin.js:2
+msgid "Une erreur est survenue."
+msgstr ""
+
+#: src/Front/UiConfig.php:144
+#: build/admin.js:2
+msgid "L'original a été supprimé"
+msgstr ""
+
+#: src/Front/UiConfig.php:145
+#: build/admin.js:2
+msgid "L'original a changé"
+msgstr ""
+
+#. translators: %s: date
+#: src/Front/UiConfig.php:147
+#: build/admin.js:4
+#, php-format,js-format
+msgid "En ligne le %s"
+msgstr ""
+
+#. translators: %s: name
+#. translators: %s: client name
+#: src/Front/UiConfig.php:149
+#: src/Preview/PreviewController.php:525
+#: build/admin.js:3
+#, php-format,js-format
+msgid "Validée par %s"
+msgstr ""
+
+#: src/Log/Logger.php:84
+#: src/Rest/Presenter.php:100
+msgid "Système"
+msgstr ""
+
+#. translators: 1: site name, 2: client name, 3: content title
+#: src/Notify/Mailer.php:23
+#, php-format
+msgid "[%1$s] %2$s a validé « %3$s »"
+msgstr ""
+
+#. translators: 1: site name, 2: client name, 3: content title
+#: src/Notify/Mailer.php:25
+#, php-format
+msgid "[%1$s] %2$s demande des modifications sur « %3$s »"
+msgstr ""
+
+#: src/Notify/Mailer.php:28
+#, php-format
+msgid "%1$s a validé la version de travail de « %2$s »."
+msgstr ""
+
+#: src/Notify/Mailer.php:29
+#, php-format
+msgid "%1$s demande des modifications sur la version de travail de « %2$s »."
+msgstr ""
+
+#: src/Notify/Mailer.php:31
+msgid "Commentaire :"
+msgstr ""
+
+#: src/Notify/Mailer.php:33
+msgid "Voir la version :"
+msgstr ""
+
+#. translators: %s: content title
+#: src/Notify/Mailer.php:41
+#, php-format
+msgid "[%1$s] « %2$s » a été publié comme prévu"
+msgstr ""
+
+#. translators: %s: content title
+#: src/Notify/Mailer.php:43
+#, php-format
+msgid "[%1$s] Échec de la publication programmée de « %2$s »"
+msgstr ""
+
+#: src/Notify/Mailer.php:45
+#, php-format
+msgid "La publication programmée de « %s » a été effectuée."
+msgstr ""
+
+#: src/Notify/Mailer.php:46
+#, php-format
+msgid "La publication programmée de « %s » n'a pas pu être effectuée. La version en ligne est inchangée et la version de travail est conservée."
+msgstr ""
+
+#: src/Plugin.php:118
+msgid "Lümia Staging a besoin du thème Bricks (ou d'un thème enfant de Bricks) pour fonctionner. Les versions de travail existantes sont conservées et restent invisibles."
+msgstr ""
+
+#: src/Post/PostStatus.php:45
+msgctxt "post status"
+msgid "Version de travail"
+msgstr ""
+
+#: src/Preview/PreviewController.php:325
+#: src/Preview/PreviewController.php:477
+msgid "Aperçu : les envois de formulaires et les commandes sont désactivés."
+msgstr ""
+
+#: src/Preview/PreviewController.php:333
+#: build/admin.js:11
+msgid "Aperçu"
+msgstr ""
+
+#: src/Preview/PreviewController.php:333
+msgid "Retour"
+msgstr ""
+
+#: src/Preview/PreviewController.php:345
+msgid "La page a expiré. Rechargez-la puis recommencez."
+msgstr ""
+
+#: src/Preview/PreviewController.php:357
+msgid "Indiquez votre nom (100 caractères maximum)."
+msgstr ""
+
+#: src/Preview/PreviewController.php:360
+msgid "Choix invalide."
+msgstr ""
+
+#: src/Preview/PreviewController.php:363
+msgid "Le commentaire est limité à 2 000 caractères."
+msgstr ""
+
+#: src/Preview/PreviewController.php:366
+msgid "Décrivez les modifications souhaitées."
+msgstr ""
+
+#: src/Preview/PreviewController.php:510
+msgid "Aperçu de la nouvelle version"
+msgstr ""
+
+#: src/Preview/PreviewController.php:511
+msgid "Aperçu du template sur cette page"
+msgstr ""
+
+#: src/Preview/PreviewController.php:512
+msgid "Avant"
+msgstr ""
+
+#: src/Preview/PreviewController.php:513
+msgid "Après"
+msgstr ""
+
+#: src/Preview/PreviewController.php:514
+msgid "Valider"
+msgstr ""
+
+#: src/Preview/PreviewController.php:515
+msgid "Demander des modifications"
+msgstr ""
+
+#: src/Preview/PreviewController.php:516
+msgid "Votre nom"
+msgstr ""
+
+#: src/Preview/PreviewController.php:517
+msgid "Votre commentaire"
+msgstr ""
+
+#: src/Preview/PreviewController.php:518
+msgid "Décrivez les modifications souhaitées"
+msgstr ""
+
+#: src/Preview/PreviewController.php:519
+msgid "Envoyer"
+msgstr ""
+
+#: src/Preview/PreviewController.php:521
+msgid "Réduire la barre"
+msgstr ""
+
+#: src/Preview/PreviewController.php:522
+msgid "Afficher la barre d'aperçu"
+msgstr ""
+
+#: src/Preview/PreviewController.php:523
+msgid "Merci, votre validation a bien été envoyée."
+msgstr ""
+
+#: src/Preview/PreviewController.php:524
+msgid "Merci, votre demande a bien été envoyée."
+msgstr ""
+
+#: src/Preview/PreviewController.php:526
+#, php-format
+msgid "Modifications demandées par %s"
+msgstr ""
+
+#: src/Preview/PreviewController.php:527
+msgid "L'envoi a échoué. Réessayez."
+msgstr ""
+
+#: src/Preview/PreviewController.php:528
+#, php-format
+msgid "Lien valable jusqu'au %s"
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:53
+msgid "L'original a été mis à la corbeille. Cette version ne peut plus être publiée : exportez-la ou abandonnez-la."
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:57
+msgid "Le type de template a été changé dans la version. La publication est bloquée : remettez le type d'origine dans les réglages du template."
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:61
+msgid "L'original a changé : quelqu'un l'a modifié directement depuis la création de cette version. Publier écrasera ces modifications. Comparez avant de décider."
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:64
+msgid "Des éléments globaux Bricks (classes, variables, couleurs, styles de thème ou composants) ont été modifiés depuis la création de la version. Ces changements sont déjà en ligne depuis leur modification : ils ne font pas partie de cette publication."
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:67
+msgid "Le client n'a pas encore répondu à la demande de validation. Vous pouvez publier quand même."
+msgstr ""
+
+#: src/Publish/ChangeSummary.php:70
+msgid "La version a été modifiée après sa programmation : vérifiez l'aperçu, c'est ce contenu qui sera publié."
+msgstr ""
+
+#. translators: 1: Bricks version at creation, 2: current version
+#: src/Publish/ChangeSummary.php:78
+#, php-format
+msgid "Bricks est passé de la version %1$s à %2$s depuis la création de la version. Vérifiez l'aperçu avant de publier."
+msgstr ""
+
+#. translators: %s: element list
+#: src/Publish/ChangeSummary.php:92
+#, php-format
+msgid "Des images utilisées dans la version ont été supprimées de la médiathèque ; elles ne s'afficheront pas. Éléments concernés : %s."
+msgstr ""
+
+#. translators: 1: step name, 2: error message
+#: src/Publish/PublishPipeline.php:158
+#, php-format
+msgid "La publication a échoué à l'étape « %1$s » (%2$s). La version en ligne a été restaurée à l'identique et la version de travail est conservée : vous pouvez réessayer."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:215
+msgid "Cette sauvegarde n'existe plus."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:220
+msgid "Le contenu de cette sauvegarde a été supprimé."
+msgstr ""
+
+#. translators: 1: old Bricks version, 2: current Bricks version
+#: src/Publish/PublishPipeline.php:227
+#, php-format
+msgid "Cette sauvegarde a été faite sous Bricks %1$s, le site utilise Bricks %2$s. L'affichage peut différer : vérifiez l'aperçu, puis confirmez la restauration."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:237
+msgid "Une publication est déjà en cours sur ce contenu."
+msgstr ""
+
+#. translators: %s: date
+#: src/Publish/PublishPipeline.php:249
+#, php-format
+msgid "Retour à la version du %s"
+msgstr ""
+
+#. translators: %s: error
+#: src/Publish/PublishPipeline.php:294
+#, php-format
+msgid "La restauration a échoué (%s). Le contenu en ligne est inchangé."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:332
+msgid "contrôles"
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:333
+msgid "sauvegarde de la version en ligne"
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:334
+msgid "copie du contenu"
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:335
+msgid "régénération du CSS"
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:336
+msgid "purge des caches"
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:361
+msgid "Aucune version à publier."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:365
+msgid "Deux versions du lot concernent le même contenu."
+msgstr ""
+
+#. translators: %s: state
+#: src/Publish/PublishPipeline.php:381
+#, php-format
+msgid "Cette version ne peut pas être publiée dans l'état « %s »."
+msgstr ""
+
+#. translators: %s: title
+#: src/Publish/PublishPipeline.php:385
+#, php-format
+msgid "L'original de « %s » a été supprimé : la version ne peut plus être publiée. Exportez-la ou abandonnez-la."
+msgstr ""
+
+#. translators: %s: title
+#: src/Publish/PublishPipeline.php:388
+#, php-format
+msgid "Le type de template de la version de « %s » a été changé : publication bloquée pour ne pas modifier l'affichage du site. Remettez le type d'origine."
+msgstr ""
+
+#. translators: %s: title
+#: src/Publish/PublishPipeline.php:392
+#, php-format
+msgid "« %s » a été modifié directement depuis la création de la version. Publier écraserait ces modifications : comparez d'abord, ou publiez quand même."
+msgstr ""
+
+#: src/Publish/PublishPipeline.php:405
+msgid "Ce lot est déjà en cours de publication."
+msgstr ""
+
+#. translators: %s: title
+#: src/Publish/PublishPipeline.php:410
+#, php-format
+msgid "Publication déjà en cours pour « %s »."
+msgstr ""
+
+#: src/Publish/ScheduleService.php:50
+msgid "Date de programmation invalide."
+msgstr ""
+
+#: src/Publish/ScheduleService.php:54
+msgid "La date de programmation doit être dans le futur."
+msgstr ""
+
+#: src/Publish/ScheduleService.php:66
+msgid "L'original a été supprimé : impossible de programmer cette version."
+msgstr ""
+
+#: src/Publish/ScheduleService.php:133
+msgid "Sélectionnez au moins une version."
+msgstr ""
+
+#. translators: %s: title
+#: src/Publish/ScheduleService.php:139
+#, php-format
+msgid "« %s » fait déjà partie d'un lot programmé. Annulez ce lot d'abord."
+msgstr ""
+
+#. translators: %d: batch id
+#: src/Publish/ScheduleService.php:230
+#: src/Publish/ScheduleService.php:241
+#, php-format
+msgid "Lot #%d"
+msgstr ""
+
+#: src/Rest/Presenter.php:104
+msgid "Version d'origine"
+msgstr ""
+
+#: src/Rest/RestController.php:435
+#: src/Rest/RestController.php:450
+msgid "En ligne"
+msgstr ""
+
+#: src/Rest/RestController.php:439
+msgid "Sauvegarde introuvable."
+msgstr ""
+
+#. translators: %s: date
+#: src/Rest/RestController.php:452
+#, php-format
+msgid "Version en ligne jusqu'au %s"
+msgstr ""
+
+#: src/Service/VersionService.php:117
+msgid "Ce contenu n'existe pas ou ne peut pas avoir de version de travail."
+msgstr ""
+
+#: src/Service/VersionService.php:120
+msgid "Ce contenu n'est pas édité avec Bricks ou son type n'est pas activé dans les réglages de Lümia Staging."
+msgstr ""
+
+#: src/Service/VersionService.php:123
+msgid "Une opération est déjà en cours sur ce contenu. Réessayez dans quelques secondes."
+msgstr ""
+
+#: src/Service/VersionService.php:130
+msgid "Une version de travail est déjà ouverte pour ce contenu. Reprenez-la plutôt que d'en créer une seconde."
+msgstr ""
+
+#. translators: 1: current state, 2: target state
+#: src/Service/VersionService.php:201
+#, php-format
+msgid "Action impossible : la version est « %1$s » et ne peut pas passer à « %2$s »."
+msgstr ""
+
+#: src/Service/VersionService.php:230
+msgid "Cette version a été validée par le client. Confirmez l'abandon : elle sera définitivement supprimée."
+msgstr ""
+
+#: src/Service/VersionService.php:284
+msgid "Cette version n'existe plus : elle a peut-être déjà été publiée ou abandonnée."
+msgstr ""
+
+#: src/Update/GitHubUpdater.php:165
+msgid "Versions de travail pour les pages et templates Bricks."
+msgstr ""
+
+#: src/Update/GitHubUpdater.php:185
+msgid "Release introuvable : réessayez plus tard."
+msgstr ""
+
+#: src/Update/GitHubUpdater.php:206
+msgid "Mise à jour refusée : l'empreinte SHA256 de l'archive ne correspond pas à celle publiée avec la release."
+msgstr ""
+
+#: src/Update/GitHubUpdater.php:239
+msgid "Téléchargement de la mise à jour impossible."
+msgstr ""
+
+#: src/Update/GitHubUpdater.php:244
+msgid "Téléchargement de la mise à jour impossible (accès au dépôt refusé ?)."
+msgstr ""
+
+#: build/admin.js:1
+msgid "aujourd'hui"
+msgstr ""
+
+#: build/admin.js:1
+msgid "hier"
+msgstr ""
+
+#: build/admin.js:1
+#, js-format
+msgid "il y a %d jours"
+msgstr ""
+
+#: build/admin.js:2
+msgid "Header"
+msgstr ""
+
+#: build/admin.js:2
+msgid "Footer"
+msgstr ""
+
+#: build/admin.js:2
+msgid "Section"
+msgstr ""
+
+#: build/admin.js:2
+#: build/admin.js:11
+msgid "Contenu"
+msgstr ""
+
+#: build/admin.js:2
+msgid "Archive"
+msgstr ""
+
+#: build/admin.js:2
+msgid "Popup"
+msgstr ""
+
+#. translators: %s: content title
+#: build/admin.js:7
+#, js-format
+msgid "Publier « %s »"
+msgstr ""
+
+#: build/admin.js:7
+msgid "Précision : à 5 minutes près."
+msgstr ""
+
+#: build/admin.js:7
+msgid "Programmation annulée."
+msgstr ""
+
+#: build/admin.js:7
+msgid "Programmer à cette date"
+msgstr ""
+
+#: build/admin.js:7
+msgid "Le client voit la page comme en production, peut comparer avec la version en ligne, valider ou demander des modifications. Aucun compte WordPress n'est nécessaire."
+msgstr ""
+
+#: build/admin.js:7
+msgid "Par défaut : la page d'accueil. Le client peut ensuite naviguer sur le site."
+msgstr ""
+
+#: build/admin.js:7
+msgid "Lien client"
+msgstr ""
+
+#: build/admin.js:7
+msgid "Lien copié dans le presse-papiers."
+msgstr ""
+
+#: build/admin.js:7
+msgid "Il ne sera plus affiché : gardez-le ou créez-en un autre."
+msgstr ""
+
+#: build/admin.js:8
+msgid "Retours du client"
+msgstr ""
+
+#: build/admin.js:8
+#: build/admin.js:9
+msgid "a validé"
+msgstr ""
+
+#: build/admin.js:8
+#: build/admin.js:9
+msgid "demande des modifications"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Annulé : la version précédente est de nouveau en ligne."
+msgstr ""
+
+#: build/admin.js:8
+msgid "Toutes"
+msgstr ""
+
+#: build/admin.js:8
+msgid "En cours"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Validées"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Programmées"
+msgstr ""
+
+#: build/admin.js:8
+#: build/admin.js:9
+msgid "Publier la sélection"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Tout est publié ou rien ne l'est : si une publication échoue, celles déjà faites sont restaurées. Les templates passent en premier, puis les pages."
+msgstr ""
+
+#: build/admin.js:8
+#: build/admin.js:9
+msgid "Template"
+msgstr ""
+
+#: build/admin.js:8
+msgid "l'original a changé"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Programmer à une date"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Date et heure (fuseau du site)"
+msgstr ""
+
+#: build/admin.js:8
+msgid "Programmer le lot"
+msgstr ""
+
+#. translators: %s: title
+#: build/admin.js:9
+#, js-format
+msgid "Sélectionner « %s »"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Page"
+msgstr ""
+
+#. translators: %s: relative date
+#: build/admin.js:9
+#, js-format
+msgid "modifiée %s"
+msgstr ""
+
+#. translators: %d: days
+#: build/admin.js:9
+#, js-format
+msgid "Ouverte depuis %d jour : pensez à la publier ou à l'abandonner."
+msgid_plural "Ouverte depuis %d jours : pensez à la publier ou à l'abandonner."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin.js:9
+msgid "Ouvrir dans Bricks"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Exporter"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Modifier la publication"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Les visiteurs voient toujours la version en ligne tant qu'une version n'est pas publiée."
+msgstr ""
+
+#: build/admin.js:9
+msgid "Rechercher une version"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Réessayer"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Lots programmés"
+msgstr ""
+
+#. translators: 1: date, 2: count
+#: build/admin.js:9
+#, js-format
+msgid "En ligne le %1$s — %2$d contenu"
+msgid_plural "En ligne le %1$s — %2$d contenus"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin.js:9
+msgid "Annuler le lot"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Aucune version ne correspond."
+msgstr ""
+
+#: build/admin.js:9
+msgid "Aucune version en cours"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Pour modifier une page en ligne sans que les visiteurs voient le travail en cours, cliquez sur « Créer une version » dans la liste des pages, dans la barre d'admin ou dans Bricks."
+msgstr ""
+
+#: build/admin.js:9
+msgid "Aller aux pages"
+msgstr ""
+
+#: build/admin.js:9
+msgid "Sélection"
+msgstr ""
+
+#. translators: %d: count
+#: build/admin.js:9
+#, js-format
+msgid "%d version sélectionnée"
+msgid_plural "%d versions sélectionnées"
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/admin.js:9
+msgid "Désélectionner"
+msgstr ""
+
+#. translators: %s: title
+#: build/admin.js:10
+#, js-format
+msgid "« %s » est publié."
+msgstr ""
+
+#: build/admin.js:10
+msgid "Lot programmé."
+msgstr ""
+
+#: build/admin.js:10
+msgid "Sélection publiée."
+msgstr ""
+
+#: build/admin.js:10
+msgid "Tous les niveaux"
+msgstr ""
+
+#: build/admin.js:10
+msgid "Information"
+msgstr ""
+
+#: build/admin.js:10
+#: build/admin.js:11
+msgid "Alerte"
+msgstr ""
+
+#: build/admin.js:10
+#: build/admin.js:11
+msgid "Erreur"
+msgstr ""
+
+#: build/admin.js:10
+msgid "Version restaurée : elle est en ligne."
+msgstr ""
+
+#. translators: %s: title
+#: build/admin.js:11
+#, js-format
+msgid "Historique de « %s »"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Voir la page en ligne"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Une version de travail est ouverte pour ce contenu. Restaurer une ancienne version modifiera l'original : la version de travail signalera un conflit à sa publication."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Aucune publication pour l'instant"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Chaque publication d'une version conserve ici une sauvegarde de l'état précédent, restaurable en un clic."
+msgstr ""
+
+#: build/admin.js:11
+msgid "En ligne actuellement"
+msgstr ""
+
+#. translators: %s: date
+#: build/admin.js:11
+#, js-format
+msgid "En ligne jusqu'au %s"
+msgstr ""
+
+#. translators: 1: user, 2: note
+#: build/admin.js:11
+#, js-format
+msgid "Remplacée par %1$s%2$s"
+msgstr ""
+
+#. translators: %s: Bricks version
+#: build/admin.js:11
+#, js-format
+msgid "Sauvegardée sous Bricks %s : vérifiez l'aperçu avant de restaurer."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Comparer avec la version en ligne"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Revenir à cette version"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Confirmer la restauration"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Restaurer quand même"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Ouvrez l'historique depuis la liste des pages ou des templates (lien « Historique » sous le titre)."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Rien à comparer."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Mode de comparaison"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Côte à côte"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Curseur"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Format"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Aperçu sur"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Qui a fait quoi, quand, sur quel contenu. Conservé 12 mois par défaut."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Niveau"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Rechercher dans le journal"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Exporter en CSV"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Aucune entrée."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Date"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Utilisateur"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Action"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Précédent"
+msgstr ""
+
+#. translators: 1: page, 2: pages
+#: build/admin.js:11
+#, js-format
+msgid "Page %1$d sur %2$d"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Suivant"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Réglages enregistrés."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Contenus"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Pages éditées avec Bricks"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Templates Bricks (header, footer, section, fiche, archive, popup…)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Publier aussi le titre, l'extrait et l'image mise en avant"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Le slug et le SEO ne sont jamais publiés depuis une version."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Durée par défaut des liens (jours)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Historique et journal"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Sauvegardes conservées par contenu"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Durée de conservation des sauvegardes (jours)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "La sauvegarde la plus récente de chaque contenu est toujours conservée."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Durée de conservation du journal (mois)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Notifications et mises à jour"
+msgstr ""
+
+#: build/admin.js:11
+msgid "E-mails (validation client, publication programmée)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Envoyés par le plugin SMTP du site."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Canal de mise à jour"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Stable"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Bêta (versions de test en premier)"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Données"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Supprimer toutes les données à la désinstallation"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Versions de travail, sauvegardes, liens d'aperçu, retours clients et journal. Irréversible."
+msgstr ""
+
+#: build/admin.js:11
+msgid "Des versions de travail sont ouvertes : elles seront supprimées à la désinstallation. Continuer ?"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Versions ouvertes qui seront supprimées :"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Bricks"
+msgstr ""
+
+#: build/admin.js:11
+msgid "CSS"
+msgstr ""
+
+#: build/admin.js:11
+msgid "fichiers externes"
+msgstr ""
+
+#: build/admin.js:11
+msgid "en ligne"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Programmation"
+msgstr ""
+
+#: build/admin.js:11
+msgid "Enregistrer"
+msgstr ""

@@ -1,0 +1,118 @@
+name: Release stable
+
+# Lancement manuel sur main : gh workflow run release.yml -f bump=patch|minor|major
+# Écrit la version (fichier principal, package.json), date la section
+# « Non publié » du CHANGELOG, commite sur main, tague, publie le ZIP +
+# SHA256SUMS. Première release (aucun tag stable) : version du fichier telle
+# quelle, sans incrément.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Incrément de version
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lmv-release-stable
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  release:
+    needs: ci
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          stable=$(git tag -l 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1 || true)
+          if [[ -z "$stable" ]]; then
+            version=$(sed -nE "s/^define\( 'LMV_VERSION', '([0-9]+\.[0-9]+\.[0-9]+).*/\1/p" lumia-staging.php)
+          else
+            IFS='.' read -r major minor patch <<< "${stable#v}"
+            case "$BUMP" in
+              major) version="$((major + 1)).0.0" ;;
+              minor) version="${major}.$((minor + 1)).0" ;;
+              *)     version="${major}.${minor}.$((patch + 1))" ;;
+            esac
+          fi
+          if git rev-parse "v${version}" >/dev/null 2>&1; then
+            echo "Le tag v${version} existe déjà" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Release : $version (dernière stable : ${stable:-aucune}, incrément : $BUMP)"
+
+      - name: Écrire la version et dater le CHANGELOG
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          bin/set-version.sh "$VERSION"
+          bin/changelog.sh promote "$VERSION" "$(date -u +%Y-%m-%d)"
+          bin/changelog.sh section "$VERSION" > "$RUNNER_TEMP/NOTES.md"
+          cat "$RUNNER_TEMP/NOTES.md"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: bin/build-zip.sh
+
+      - name: Commit et tag
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lumia-staging.php package.json CHANGELOG.md
+          git diff --cached --quiet || git commit -m "chore(release): v${VERSION}"
+          git tag -a "v${VERSION}" -m "Release v${VERSION}"
+          git push origin HEAD:main "v${VERSION}"
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body_path: ${{ runner.temp }}/NOTES.md
+          generate_release_notes: true
+          prerelease: false
+          make_latest: true
+          files: |
+            dist/lumia-staging-*.zip
+            dist/SHA256SUMS
+
+      - name: Ramener dev sur main
+        run: |
+          # dev n'a jamais de commit de version : l'avance rapide suffit en
+          # général. Sinon, fusionner main dans dev à la main.
+          if git ls-remote --exit-code --heads origin dev >/dev/null; then
+            git fetch origin dev
+            if git merge-base --is-ancestor origin/dev HEAD; then
+              git push origin HEAD:dev
+            else
+              echo "::notice::dev a des commits absents de main : git checkout dev && git merge main"
+            fi
+          fi

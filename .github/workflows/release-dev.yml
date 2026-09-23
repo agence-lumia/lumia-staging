@@ -1,0 +1,104 @@
+name: Pré-release dev
+
+# Chaque push sur dev publie une pré-release vX.Y.Z-dev.N (X.Y.Z = patch
+# suivant la dernière stable), installable par le canal « dev » de l'updater.
+# La version n'est écrite que dans l'archive : la branche dev ne reçoit aucun
+# commit de version, donc aucun conflit à la fusion vers main.
+
+on:
+  push:
+    branches: [dev]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lmv-release-dev
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  release:
+    needs: ci
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Version
+        id: version
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          stable=$(git tag -l 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1 || true)
+          if [[ -n "$stable" ]]; then
+            IFS='.' read -r major minor patch <<< "${stable#v}"
+            base="${major}.${minor}.$((patch + 1))"
+          else
+            # Aucune stable encore : pré-versions de la version du fichier.
+            base=$(sed -nE "s/^define\( 'LMV_VERSION', '([0-9]+\.[0-9]+\.[0-9]+).*/\1/p" lumia-staging.php)
+          fi
+          last=$(git tag -l "v${base}-dev.*" | grep -E "^v${base}-dev\.[0-9]+$" | sort -V | tail -n1 || true)
+          if [[ -z "$last" ]]; then n=1; else n=$(( ${last##*.} + 1 )); fi
+          echo "version=${base}-dev.${n}" >> "$GITHUB_OUTPUT"
+          echo "Pré-release : ${base}-dev.${n} (dernière stable : ${stable:-aucune})"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      - name: Archive
+        run: |
+          bin/set-version.sh "${{ steps.version.outputs.version }}"
+          bin/build-zip.sh
+
+      - name: Notes
+        run: |
+          {
+            echo "Pré-release automatique de la branche \`dev\` (canal « dev » de l'updater)."
+            echo
+            bin/changelog.sh section 'Non publié'
+          } > "$RUNNER_TEMP/NOTES.md"
+
+      - name: Tag
+        env:
+          TAG: v${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" -m "Pré-release $TAG" "$GITHUB_SHA"
+          git push origin "$TAG"
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body_path: ${{ runner.temp }}/NOTES.md
+          prerelease: true
+          make_latest: false
+          files: |
+            dist/lumia-staging-*.zip
+            dist/SHA256SUMS
+
+      - name: Supprimer les anciennes pré-releases dev
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KEEP: v${{ steps.version.outputs.version }}
+        run: |
+          gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName,isPrerelease \
+            | jq -r '.[] | select(.isPrerelease) | .tagName' \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-dev\.[0-9]+$' \
+            | grep -vx "$KEEP" \
+            | while IFS= read -r tag; do
+                echo "Suppression de $tag"
+                gh release delete "$tag" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true
+              done

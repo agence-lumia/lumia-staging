@@ -1,0 +1,28 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 8
+	phpVersion: 80100
+	paths:
+		- lumia-staging.php
+		- uninstall.php
+		- src
+	scanFiles:
+		- vendor/php-stubs/wp-cli-stubs/wp-cli-stubs.php
+	bootstrapFiles:
+		- tests/phpstan-bootstrap.php
+	ignoreErrors:
+		# Bricks est payant : ses classes ne sont pas disponibles pour l'analyse.
+		- '#(Class|Call to static method .* on an unknown class) Bricks\\#'
+		- '#Call to function method_exists\(\) with .*Bricks#'
+		- '#Function bricks_is_(builder|builder_main|builder_call) not found#'
+		# Action Scheduler est optionnel (fourni par WooCommerce).
+		- '#Function as_(schedule_single_action|unschedule_all_actions) not found#'
+		- '#Automattic\\WooCommerce\\Utilities\\FeaturesUtil#'
+		# Tables dédiées : le nom de table vient de $wpdb->prefix, la requête
+		# passe bien par prepare() (§8) ; les stubs exigent une chaîne littérale.
+		- '#Parameter \#1 \$query of method wpdb::prepare\(\) expects literal-string#'
+		# prepare() ne renvoie null qu'en cas d'erreur de programmation.
+		- '#Parameter \#1 \$query of method wpdb::query\(\) expects string, string\|null given#'
+	reportUnmatchedIgnoredErrors: false

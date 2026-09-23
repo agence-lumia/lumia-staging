@@ -1,0 +1,30 @@
+# Banc d'intégration local et CI : docker compose -f tests/integration/docker-compose.yml up --abort-on-container-exit --exit-code-from wp
+services:
+  db:
+    image: mariadb:${MARIADB_VERSION:-12.2.2}
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: wp
+      MARIADB_USER: wp
+      MARIADB_PASSWORD: wp
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 3s
+      retries: 30
+    tmpfs:
+      - /var/lib/mysql
+
+  wp:
+    image: wordpress:cli-php${PHP_VERSION:-8.5}
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WP_VERSION: ${WP_VERSION:-latest}
+    volumes:
+      - ../..:/plugin:ro
+      - ..:/tests:ro
+    tmpfs:
+      - /var/www/html:uid=82,gid=82
+      - /tmp:uid=82,gid=82
+    command: ["sh", "/tests/integration/run.sh"]
